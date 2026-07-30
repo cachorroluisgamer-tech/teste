@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aprendendo o Mundo Brincando</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FFF7E8;
+    --cream-2:#FFF1D6;
+    --ink:#1F2A2E;
+    --teal:#0EAE84;
+    --teal-dark:#0B8F6B;
+    --coral:#FF7A5C;
+    --yellow:#FFC93C;
+    --blue:#3E8EDE;
+    --card:#ffffff;
+    --muted:#6B7280;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    font-family:'Nunito', sans-serif;
+    color:var(--ink);
+    background:#fff;
+    line-height:1.5;
+  }
+  h1,h2,h3{
+    font-family:'Baloo 2', sans-serif;
+  }
+  .section{
+    padding:80px 24px;
+  }
+  .container{
+    max-width:1080px;
+    margin:0 auto;
+  }
+  .eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    font-size:13px;
+    font-weight:800;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    padding:6px 14px;
+    border-radius:999px;
+    background:var(--cream-2);
+    color:var(--teal-dark);
+    margin-bottom:18px;
+  }
+  .btn{
+    display:inline-block;
+    background:var(--teal);
+    color:#fff;
+    font-weight:800;
+    font-family:'Baloo 2', sans-serif;
+    padding:16px 32px;
+    border-radius:999px;
+    text-decoration:none;
+    border:none;
+    cursor:pointer;
+    font-size:16px;
+    box-shadow:0 8px 20px rgba(14,174,132,.3);
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .btn:hover{ transform:translateY(-2px); box-shadow:0 12px 26px rgba(14,174,132,.4); }
+
+  /* HERO */
+  .hero{
+    background:linear-gradient(180deg,var(--cream) 0%, var(--cream) 70%, #fff 100%);
+    padding:90px 24px 70px;
+  }
+  .hero .container{
+    display:grid;
+    grid-template-columns:1.1fr .9fr;
+    gap:56px;
+    align-items:center;
+  }
+  .hero h1{
+    font-size:44px;
+    line-height:1.15;
+    font-weight:800;
+    margin-bottom:20px;
+  }
+  .hero h1 .accent{ color:var(--teal); }
+  .hero p{
+    font-size:17px;
+    color:var(--muted);
+    max-width:480px;
+    margin-bottom:28px;
+  }
+  .hero-art{
+    position:relative;
+    display:flex;
+    justify-content:center;
+  }
+  .book-mock{
+    width:100%;
+    max-width:340px;
+    border-radius:20px;
+    box-shadow:0 30px 60px rgba(30,60,90,.25);
+    position:relative;
+    overflow:hidden;
+    transform:rotate(3deg);
+    line-height:0;
+  }
+  .book-mock img{
+    width:100%;
+    height:auto;
+    display:block;
+  }
+
+  /* BONUS EM DESTAQUE */
+  .bonus-early{
+    padding:0 24px 56px;
+    background:linear-gradient(180deg, var(--cream) 0%, #fff 100%);
+    text-align:center;
+  }
+  .bonus-early-box{
+    max-width:760px;
+    margin:0 auto;
+    background:#fff;
+    border:2px dashed #FFC93C;
+    border-radius:18px;
+    padding:26px 30px;
+    box-shadow:0 12px 30px rgba(0,0,0,.05);
+  }
+  .bonus-early-title{
+    font-family:'Baloo 2', sans-serif;
+    font-weight:800;
+    font-size:20px;
+    color:#16323A;
+    margin-bottom:14px;
+  }
+  .bonus-early-grid{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:14px 26px;
+    font-weight:700;
+    font-size:15px;
+    color:var(--teal-dark);
+  }
+
+  /* SEU FILHO TAMBEM */
+  .problems{
+    background:var(--cream-2);
+    text-align:center;
+  }
+  .problems h2{ font-size:30px; margin-bottom:40px; }
+  .problems h2 .accent{ color:var(--coral); }
+  .cards-4{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+    text-align:left;
+  }
+  .p-card{
+    background:#fff;
+    border-radius:16px;
+    padding:24px 20px;
+    box-shadow:0 6px 18px rgba(0,0,0,.05);
+  }
+  .p-card .ico{
+    width:38px; height:38px;
+    border-radius:10px;
+    background:var(--cream-2);
+    display:flex; align-items:center; justify-content:center;
+    margin-bottom:14px;
+    font-size:18px;
+  }
+  .p-card h3{ font-size:15px; margin-bottom:8px; }
+  .p-card p{ font-size:13px; color:var(--muted); }
+  .problems .note{
+    margin-top:32px;
+    font-weight:700;
+  }
+  .problems .note .accent{ color:var(--teal); }
+
+  /* POR QUE FUNCIONA */
+  .why{
+    background:var(--cream);
+    text-align:center;
+  }
+  .why h2{ font-size:30px; margin-bottom:44px; }
+  .why h2 .accent{ color:var(--teal); }
+  .cards-3{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:24px;
+    text-align:left;
+  }
+  .w-card{
+    background:#fff;
+    border-radius:18px;
+    padding:28px 24px;
+  }
+  .w-card .ico{ font-size:26px; margin-bottom:16px; }
+  .w-card h3{ font-size:17px; margin-bottom:10px; }
+  .w-card p{ font-size:14px; color:var(--muted); }
+
+  /* HABILIDADES */
+  .skills{ text-align:center; }
+  .skills h2{ font-size:30px; margin-bottom:36px; }
+  .skills h2 .accent{ color:var(--teal); }
+  .skills-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:16px;
+    margin-bottom:36px;
+    text-align:left;
+  }
+  .s-item{
+    background:var(--cream-2);
+    border-radius:14px;
+    padding:18px 20px;
+  }
+  .s-item .tag{
+    font-size:11px;
+    font-weight:800;
+    text-transform:uppercase;
+    color:var(--teal-dark);
+    display:block;
+    margin-bottom:6px;
+    letter-spacing:.04em;
+  }
+  .s-item .label{
+    font-weight:700;
+    font-size:14px;
+  }
+
+  /* O QUE VOCE VAI RECEBER */
+  .receive{
+    background:var(--cream);
+    text-align:center;
+  }
+  .receive h2{ font-size:30px; margin-bottom:40px; }
+  .receive h2 .accent{ font-style:italic; color:var(--teal); }
+  .receive-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:24px;
+    text-align:left;
+  }
+  .r-card{
+    border-radius:20px;
+    overflow:hidden;
+    background:#fff;
+    box-shadow:0 10px 30px rgba(0,0,0,.06);
+  }
+  .r-visual{
+    height:220px;
+    overflow:hidden;
+    background:#f4f4f4;
+  }
+  .r-visual img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:top;
+    display:block;
+  }
+  .r-body{ padding:20px 24px; }
+  .r-body h3{ font-size:16px; margin-bottom:6px; }
+  .r-body p{ font-size:13px; color:var(--muted); }
+
+  /* PAGINAS */
+  .pages{ text-align:center; }
+  .pages h2{ font-size:30px; margin-bottom:36px; }
+  .pages h2 em{ color:var(--teal); font-style:italic; }
+  .pages-carousel{
+    position:relative;
+    max-width:920px;
+    margin:0 auto 36px;
+  }
+  .pages-viewport{
+    overflow:hidden;
+  }
+  .pages-track{
+    display:flex;
+    transition:transform .35s ease;
+  }
+  .pages-slide{
+    flex:0 0 calc(33.333% - 14px);
+    margin-right:20px;
+  }
+  .page-mock{
+    border-radius:16px;
+    overflow:hidden;
+    box-shadow:0 10px 26px rgba(0,0,0,.08);
+    line-height:0;
+  }
+  .page-mock img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+  }
+  .carousel-arrow{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    width:44px; height:44px;
+    border-radius:50%;
+    border:none;
+    background:#fff;
+    color:var(--teal-dark);
+    font-size:18px;
+    font-weight:900;
+    box-shadow:0 8px 20px rgba(0,0,0,.14);
+    cursor:pointer;
+    display:flex; align-items:center; justify-content:center;
+    z-index:2;
+  }
+  .carousel-arrow:hover{ background:var(--teal); color:#fff; }
+  .carousel-arrow.prev{ left:-22px; }
+  .carousel-arrow.next{ right:-22px; }
+  .carousel-dots{
+    display:flex; justify-content:center; gap:8px; margin-top:20px;
+  }
+  .carousel-dots .dot{
+    width:8px; height:8px; border-radius:50%;
+    background:#DCE3E1;
+    cursor:pointer;
+    border:none;
+    padding:0;
+  }
+  .carousel-dots .dot.active{ background:var(--teal); width:22px; border-radius:5px; }
+
+  @media(max-width:860px){
+    .pages-slide{ flex:0 0 calc(50% - 10px); margin-right:20px; }
+  }
+  @media(max-width:600px){
+    .pages-slide{ flex:0 0 100%; margin-right:0; }
+    .carousel-arrow.prev{ left:4px; }
+    .carousel-arrow.next{ right:4px; }
+  }
+
+  /* PARA VOCE QUE */
+  .fit{
+    background:var(--cream);
+    text-align:center;
+  }
+  .fit h2{ font-size:30px; margin-bottom:36px; }
+  .fit h2 .accent{ font-style:italic; color:var(--teal); }
+  .fit-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:18px 40px;
+    text-align:left;
+    max-width:760px;
+    margin:0 auto 36px;
+  }
+  .fit-item{
+    display:flex;
+    gap:12px;
+    font-size:15px;
+    font-weight:600;
+  }
+  .fit-item .check{
+    color:var(--teal);
+    font-weight:900;
+  }
+
+  /* DEPOIMENTOS */
+  .testimonials{ text-align:center; }
+  .testimonials h2{ font-size:30px; margin-bottom:36px; }
+  .testimonials h2 em{ color:var(--teal); font-style:italic; }
+  .t-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+    text-align:left;
+  }
+  .t-card{
+    background:var(--cream-2);
+    border-radius:16px;
+    padding:22px;
+  }
+  .t-card .stars{ color:var(--yellow); margin-bottom:12px; letter-spacing:2px; }
+  .t-card p{ font-size:14px; margin-bottom:16px; }
+  .t-author{ display:flex; align-items:center; gap:10px; }
+  .t-avatar{
+    width:34px; height:34px; border-radius:50%;
+    background:var(--teal);
+    color:#fff;
+    display:flex; align-items:center; justify-content:center;
+    font-weight:800; font-size:13px;
+  }
+  .t-author .name{ font-weight:700; font-size:13px; }
+  .t-author .role{ font-size:11px; color:var(--muted); }
+
+  /* OFERTA */
+  .offer{
+    background:var(--cream);
+    text-align:center;
+  }
+  .offer .tags{ display:flex; gap:8px; justify-content:center; margin-bottom:18px; }
+  .offer .tags span{
+    font-size:11px; font-weight:800;
+    padding:5px 12px; border-radius:999px;
+  }
+  .offer .tags .red{ background:#FFE1DC; color:#D14343; }
+  .offer .tags .green{ background:#DFF6EC; color:var(--teal-dark); }
+  .offer h2{ font-size:30px; margin-bottom:36px; }
+  .offer h2 .accent{ color:var(--teal); }
+  .price-card{
+    max-width:460px;
+    margin:0 auto;
+    background:#fff;
+    border-radius:24px;
+    padding:36px 36px 32px;
+    box-shadow:0 25px 60px rgba(0,0,0,.1);
+    text-align:left;
+    border:1px solid rgba(14,174,132,.12);
+  }
+  .price-line{
+    display:flex; justify-content:space-between; align-items:center;
+    font-size:15px; font-weight:700; margin-bottom:14px;
+    gap:12px;
+  }
+  .price-line .check{ color:var(--teal); margin-right:8px; font-weight:900; }
+  .price-line .old{ color:var(--muted); text-decoration:line-through; font-weight:600; white-space:nowrap; }
+  .perks-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:8px 12px;
+    margin-bottom:6px;
+  }
+  .perks-grid .perk{
+    font-size:12.5px; font-weight:700; color:var(--muted);
+    display:flex; align-items:center; gap:6px;
+  }
+  .perks-grid .perk .check{ color:var(--teal); font-weight:900; }
+  .price-card hr{ border:none; border-top:1px dashed #e2e2e2; margin:20px 0 18px; }
+  .total-label{ font-size:12px; font-weight:800; color:var(--muted); text-transform:uppercase; margin-bottom:6px; letter-spacing:.03em; }
+  .total-row{
+    display:flex; align-items:baseline; gap:12px; margin-bottom:22px; flex-wrap:wrap;
+  }
+  .total-price{
+    font-family:'Baloo 2'; font-size:42px; font-weight:800; color:var(--teal-dark);
+    line-height:1;
+  }
+  .save-badge{
+    background:#FFE1DC; color:#D14343;
+    font-size:12px; font-weight:800;
+    padding:5px 12px; border-radius:999px;
+    white-space:nowrap;
+  }
+  .price-card .btn{ width:100%; text-align:center; margin-bottom:16px; font-size:17px; padding:18px 32px; }
+  .price-badges{ display:flex; justify-content:center; gap:18px; font-size:12px; color:var(--muted); flex-wrap:wrap; }
+
+  /* GARANTIA */
+  .guarantee{ text-align:center; }
+  .g-box{
+    max-width:640px; margin:0 auto;
+    background:var(--cream-2);
+    border-radius:18px;
+    padding:28px 32px;
+    display:flex; gap:18px; align-items:flex-start;
+    text-align:left;
+  }
+  .g-box .g-ico{ font-size:30px; }
+  .g-box h3{ font-size:16px; margin-bottom:6px; }
+  .g-box p{ font-size:13px; color:var(--muted); margin-bottom:10px; }
+  .g-badges{ display:flex; gap:14px; font-size:11px; color:var(--muted); flex-wrap:wrap; }
+
+  /* FAQ */
+  .faq{ background:var(--cream); text-align:center; }
+  .faq h2{ font-size:30px; margin-bottom:36px; }
+  .faq h2 .accent{ color:var(--teal); }
+  .faq-list{ max-width:640px; margin:0 auto; text-align:left; }
+  .faq-item{
+    background:#fff;
+    border-radius:12px;
+    margin-bottom:12px;
+    overflow:hidden;
+  }
+  .faq-question{
+    padding:16px 20px;
+    font-weight:700;
+    font-size:15px;
+    display:flex; justify-content:space-between; align-items:center;
+    gap:16px;
+    cursor:pointer;
+    user-select:none;
+  }
+  .faq-item .arrow{ color:var(--muted); transition:transform .2s ease; flex-shrink:0; }
+  .faq-item.open .arrow{ transform:rotate(180deg); }
+  .faq-answer{
+    max-height:0;
+    overflow:hidden;
+    transition:max-height .25s ease, padding .25s ease;
+    padding:0 20px;
+    font-size:14px;
+    color:var(--muted);
+    font-weight:500;
+  }
+  .faq-item.open .faq-answer{
+    max-height:220px;
+    padding:0 20px 18px;
+  }
+
+  /* CTA FINAL */
+  .final-cta{
+    background:linear-gradient(160deg,var(--teal),var(--teal-dark));
+    color:#fff;
+    text-align:center;
+    padding:90px 24px;
+  }
+  .final-cta h2{
+    font-size:30px;
+    margin-bottom:32px;
+    max-width:620px;
+    margin-left:auto; margin-right:auto;
+  }
+  .final-cta .btn{ background:#fff; color:var(--teal-dark); }
+
+  footer{
+    text-align:center;
+    padding:24px;
+    font-size:12px;
+    color:var(--muted);
+    background:var(--teal-dark);
+  }
+  footer{ background:var(--teal-dark); color:rgba(255,255,255,.75); }
+
+  @media(max-width:860px){
+    .hero .container{ grid-template-columns:1fr; }
+    .cards-4, .cards-3, .skills-grid, .receive-grid, .fit-grid, .t-grid{
+      grid-template-columns:1fr;
+    }
+    .section{ padding:56px 20px; }
+  }
+</style>
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "xua8pl5m95");
+</script>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div>
+      <span class="eyebrow">✦ material educativo</span>
+      <h1>30 missões educativas que fazem seu filho aprender <span class="accent">longe das telas, brincando.</span></h1>
+      <p>Um guia prático e divertido para pais que querem estimular a curiosidade e o aprendizado dos filhos de forma leve e eficaz.</p>
+      <a href="#oferta" class="btn">Quero conhecer agora</a>
+    </div>
+    <div class="hero-art">
+      <div class="book-mock">
+        <img src="assets/capa-livro.png" alt="Capa do livro Aprendendo o Mundo Brincando">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BONUS EM DESTAQUE -->
+<section class="section bonus-early">
+  <div class="container">
+    <div class="bonus-early-box">
+      <div class="bonus-early-title">🎁 Hoje você recebe gratuitamente:</div>
+      <div class="bonus-early-grid">
+        <span>✔ Kit do Explorador</span>
+        <span>✔ Certificado</span>
+        <span>✔ Atividades extras</span>
+        <span>✔ Atualizações</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEMAS -->
+<section class="section problems">
+  <div class="container">
+    <span class="eyebrow">talvez você se identifique</span>
+    <h2>Seu filho <span class="accent">também...</span></h2>
+    <div class="cards-4">
+      <div class="p-card">
+        <div class="ico">📱</div>
+        <h3>Passa muito tempo nas telas?</h3>
+        <p>Um material impresso que compete com o celular — e ganha.</p>
+      </div>
+      <div class="p-card">
+        <div class="ico">⏱️</div>
+        <h3>Perde o interesse rápido em atividades?</h3>
+        <p>Missões curtas, com progresso visível e recompensas a cada etapa.</p>
+      </div>
+      <div class="p-card">
+        <div class="ico">💰</div>
+        <h3>Ainda não entende como funciona o dinheiro?</h3>
+        <p>Um mundo inteiro dedicado a rotinas, notas e escolhas do dia a dia.</p>
+      </div>
+      <div class="p-card">
+        <div class="ico">🌱</div>
+        <h3>Você quer que ele aprenda além da escola?</h3>
+        <p>Emoções, ritmo, natureza, cidadania e profissões — no ritmo dele.</p>
+      </div>
+    </div>
+    <p class="note">Foi pensando nisso que este material foi <span class="accent">criado.</span></p>
+  </div>
+</section>
+
+<!-- POR QUE FUNCIONA -->
+<section class="section why">
+  <div class="container">
+    <span class="eyebrow">o método</span>
+    <h2>Por que <span class="accent">funciona</span></h2>
+    <div class="cards-3">
+      <div class="w-card">
+        <div class="ico">📘</div>
+        <h3>6 mundos, uma aventura</h3>
+        <p>Emoções, dinheiro, natureza, profissões, cidade e vida — cada um com 5 missões práticas.</p>
+      </div>
+      <div class="w-card">
+        <div class="ico">💗</div>
+        <h3>Aprendizado que vira hábito</h3>
+        <p>Cada missão transforma uma ação simples para praticar em casa, no mesmo dia.</p>
+      </div>
+      <div class="w-card">
+        <div class="ico">🏆</div>
+        <h3>Progresso que engaja</h3>
+        <p>Passaporte, carteira de estrelas e medalhas tornam cada conquista visível e comemorável.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HABILIDADES -->
+<section class="section skills">
+  <div class="container">
+    <span class="eyebrow">as habilidades</span>
+    <h2>O que seu filho vai <span class="accent">descobrir</span></h2>
+    <div class="skills-grid">
+      <div class="s-item"><span class="tag">Mundo das emoções</span><span class="label">❤️ Reconhecer e nomear emoções</span></div>
+      <div class="s-item"><span class="tag">Mundo do dinheiro</span><span class="label">🪙 Usar moedas e notas do dinheiro real</span></div>
+      <div class="s-item"><span class="tag">Mundo da vida</span><span class="label">✔️ Diferenciar desejo de necessidade</span></div>
+      <div class="s-item"><span class="tag">Mundo da natureza</span><span class="label">🌿 Cuidar da natureza e reciclar</span></div>
+      <div class="s-item"><span class="tag">Mundo das profissões</span><span class="label">🏙️ Reconhecer profissões da cidade</span></div>
+      <div class="s-item"><span class="tag">Mundo da cidade</span><span class="label">🗓️ Organizar a própria rotina</span></div>
+    </div>
+    <a href="#oferta" class="btn">Quero esse material agora</a>
+  </div>
+</section>
+
+<!-- O QUE VOCE VAI RECEBER -->
+<section class="section receive">
+  <div class="container">
+    <h2>O que você vai <span class="accent">receber</span></h2>
+    <div class="receive-grid">
+      <div class="r-card">
+        <div class="r-visual"><img src="assets/capa-livro.png" alt="Livro Aprendendo o Mundo Brincando"></div>
+        <div class="r-body">
+          <h3>Guia Principal: Aprendendo o Mundo Brincando</h3>
+          <p>30 missões em PDF interativo</p>
+        </div>
+      </div>
+      <div class="r-card">
+        <div class="r-visual"><img src="assets/kit-explorador.png" alt="Kit Oficial do Explorador"></div>
+        <div class="r-body">
+          <h3>Kit Oficial do Explorador</h3>
+          <p>Passaporte, medalhas, certificados e mais</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PAGINAS -->
+<section class="section pages">
+  <div class="container">
+    <h2>Veja algumas <em>páginas</em> do material</h2>
+    <div class="pages-carousel">
+      <button class="carousel-arrow prev" id="pagesPrev" aria-label="Página anterior">‹</button>
+      <div class="pages-viewport">
+        <div class="pages-track" id="pagesTrack">
+          <div class="pages-slide"><div class="page-mock"><img src="assets/missao-1.png" alt="Missão 1 - Como estou me sentindo?"></div></div>
+          <div class="pages-slide"><div class="page-mock"><img src="assets/missao-7.png" alt="Missão 7 - Guardando dinheiro"></div></div>
+          <div class="pages-slide"><div class="page-mock"><img src="assets/missao-16.png" alt="Missão 16 - Cada gota conta"></div></div>
+          <div class="pages-slide"><div class="page-mock"><img src="assets/missao-3.png" alt="Missão 3 - Conhecendo as moedas"></div></div>
+          <div class="pages-slide"><div class="page-mock"><img src="assets/missao-27.png" alt="Missão 27 - Montando um prato colorido"></div></div>
+          <div class="pages-slide"><div class="page-mock"><img src="assets/missao-18.png" alt="Missão 18 - As árvores são nossas amigas"></div></div>
+        </div>
+      </div>
+      <button class="carousel-arrow next" id="pagesNext" aria-label="Próxima página">›</button>
+    </div>
+    <div class="carousel-dots" id="pagesDots"></div>
+    <a href="#oferta" class="btn">Quero esse material agora</a>
+  </div>
+</section>
+
+<!-- PARA VOCE QUE -->
+<section class="section fit">
+  <div class="container">
+    <h2>Este material é <span class="accent">para você que:</span></h2>
+    <div class="fit-grid">
+      <div class="fit-item"><span class="check">✅</span> Quer tirar o filho da tela com algo que realmente ensina</div>
+      <div class="fit-item"><span class="check">✅</span> Busca uma forma lúdica de explicar dinheiro, emoções e rotina</div>
+      <div class="fit-item"><span class="check">✅</span> Já tentou apostilas de exercício e viu a criança perder o interesse rápido</div>
+      <div class="fit-item"><span class="check">✅</span> Quer reforçar em casa o que a escola começa a ensinar</div>
+      <div class="fit-item"><span class="check">✅</span> Precisa de atividades prontas, sem ter que planejar nada</div>
+      <div class="fit-item"><span class="check">✅</span> Valoriza aprendizado com propósito, não só entretenimento</div>
+    </div>
+    <a href="#oferta" class="btn">Quero garantir agora →</a>
+  </div>
+</section>
+
+<!-- DEPOIMENTOS -->
+<section class="section testimonials">
+  <div class="container">
+    <h2>O que as <em>famílias</em> dizem</h2>
+    <div class="t-grid">
+      <div class="t-card">
+        <div class="stars">★★★★★</div>
+        <p>"Minha filha adorou! Ela ficou fazendo experimentos a semana toda. Super recomendo!"</p>
+        <div class="t-author">
+          <div class="t-avatar">A</div>
+          <div><div class="name">Ana Paula M.</div><div class="role">Mãe de 2 filhos</div></div>
+        </div>
+      </div>
+      <div class="t-card">
+        <div class="stars">★★★★★</div>
+        <p>"Finalmente um material que consigo aplicar em casa sem complicação. As explicações são perfeitas!"</p>
+        <div class="t-author">
+          <div class="t-avatar">C</div>
+          <div><div class="name">Carlos Eduardo S.</div><div class="role">Pai de menino de 7 anos</div></div>
+        </div>
+      </div>
+      <div class="t-card">
+        <div class="stars">★★★★★</div>
+        <p>"Comprei para meu neto e ele não larga mais. Aprende brincando de verdade!"</p>
+        <div class="t-author">
+          <div class="t-avatar">M</div>
+          <div><div class="name">Maria das Graças</div><div class="role">Avó coruja</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OFERTA -->
+<section class="section offer" id="oferta">
+  <div class="container">
+    <div class="tags">
+      <span class="red">⏰ oferta de lançamento</span>
+      <span class="green">🔥 bônus só hoje</span>
+    </div>
+    <h2>Tudo o que você <span class="accent">leva hoje</span></h2>
+    <div class="price-card">
+      <div class="price-line"><span><span class="check">✔</span>Livro completo Aprendendo o Mundo Brincando</span><span class="old">R$47,00</span></div>
+      <div class="price-line"><span><span class="check">✔</span>Kit Oficial do Explorador</span><span class="old">R$19,00</span></div>
+      <div class="perks-grid">
+        <span class="perk"><span class="check">✔</span>Material para imprimir</span>
+        <span class="perk"><span class="check">✔</span>Educação financeira</span>
+        <span class="perk"><span class="check">✔</span>Inteligência emocional</span>
+        <span class="perk"><span class="check">✔</span>Natureza</span>
+        <span class="perk"><span class="check">✔</span>Profissões</span>
+        <span class="perk"><span class="check">✔</span>Cidade</span>
+        <span class="perk"><span class="check">✔</span>Vida</span>
+        <span class="perk"><span class="check">✔</span>Certificado</span>
+        <span class="perk"><span class="check">✔</span>Kit bônus</span>
+        <span class="perk"><span class="check">✔</span>Acesso vitalício</span>
+      </div>
+      <hr>
+      <div class="total-label">Valor total: R$67,00 — hoje, por apenas</div>
+      <div class="total-row">
+        <div class="total-price">R$ 19,90</div>
+        <span class="save-badge">Economize 70%</span>
+      </div>
+      <a href="https://pay.cakto.com.br/baykpqn_1001359" class="btn">Receber agora →</a>
+      <div class="price-badges">
+        <span>🔒 Compra 100% segura</span>
+        <span>⚡ Acesso imediato</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GARANTIA -->
+<section class="section guarantee">
+  <div class="container">
+    <span class="eyebrow">zero risco</span>
+    <h2 style="font-size:30px; margin-bottom:32px;">Garantia de <span class="accent" style="color:var(--teal);">7 dias</span></h2>
+    <div class="g-box">
+      <div class="g-ico">🛡️</div>
+      <div>
+        <h3>Teste durante 7 dias. Se não gostar, devolvemos 100% do valor.</h3>
+        <p>Baixe, explore, faça a primeira missão com seu filho. Se em 7 dias achar que o material não é para vocês, é só nos mandar um e-mail que devolvemos 100% do valor. Sem burocracia, sem perguntas.</p>
+        <div class="g-badges">
+          <span>💳 Pagamento seguro</span>
+          <span>🔁 Acesso por e-mail</span>
+          <span>✅ Reembolso garantido</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section faq">
+  <div class="container">
+    <span class="eyebrow">perguntas frequentes</span>
+    <h2>Ficou com <span class="accent">alguma dúvida?</span></h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-question"><span>Para qual idade é indicado?</span><span class="arrow">⌄</span></div>
+        <div class="faq-answer">O material foi criado para crianças de 6 a 10 anos, com missões e linguagem adaptadas para essa faixa etária.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question"><span>É um pagamento único?</span><span class="arrow">⌄</span></div>
+        <div class="faq-answer">Sim! Você paga uma única vez e tem acesso vitalício ao material, sem mensalidades ou cobranças recorrentes.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question"><span>Como recebo o material?</span><span class="arrow">⌄</span></div>
+        <div class="faq-answer">Assim que a compra é confirmada, você recebe por e-mail o link de acesso para baixar todo o conteúdo em PDF.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question"><span>Posso imprimir as atividades?</span><span class="arrow">⌄</span></div>
+        <div class="faq-answer">Sim, o material é otimizado para impressão em casa ou em gráfica, mas também pode ser preenchido direto na tela.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question"><span>Preciso imprimir tudo de uma vez?</span><span class="arrow">⌄</span></div>
+        <div class="faq-answer">Não. Você pode imprimir missão por missão, no ritmo que for melhor para o seu filho.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question"><span>E se eu não gostar?</span><span class="arrow">⌄</span></div>
+        <div class="faq-answer">Você tem 7 dias de garantia incondicional. Se não gostar, é só pedir reembolso e devolvemos 100% do valor.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question"><span>É PDF?</span><span class="arrow">⌄</span></div>
+        <div class="faq-answer">Sim, o material é 100% digital em PDF, com acesso vitalício assim que a compra é confirmada.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question"><span>Quantas páginas tem o material?</span><span class="arrow">⌄</span></div>
+        <div class="faq-answer">O guia principal tem mais de 50 páginas com as 30 missões, além do Kit Oficial do Explorador como bônus.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question"><span>Serve para usar na escola?</span><span class="arrow">⌄</span></div>
+        <div class="faq-answer">Sim! Professores e educadores também usam como reforço extraclasse, mas o material foi pensado especialmente para o uso em casa, com a família.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="final-cta">
+  <h2>O conhecimento que seu filho leva hoje pode acompanhá-lo por muito mais anos</h2>
+  <a href="#oferta" class="btn">Garantir meu acesso agora</a>
+</section>
+
+<footer>
+  © 2026 Mundo Brincando. Todos os direitos reservados.<br>
+  Dúvidas? <a href="mailto:mundobrincando@outlook.com" style="color:inherit;">mundobrincando@outlook.com</a>
+</footer>
+
+<script>
+  (function(){
+    const track = document.getElementById('pagesTrack');
+    const dotsWrap = document.getElementById('pagesDots');
+    const prevBtn = document.getElementById('pagesPrev');
+    const nextBtn = document.getElementById('pagesNext');
+    const slides = track.querySelectorAll('.pages-slide');
+    let perView = window.innerWidth <= 600 ? 1 : (window.innerWidth <= 860 ? 2 : 3);
+    let index = 0;
+
+    function maxIndex(){ return Math.max(0, slides.length - perView); }
+
+    function buildDots(){
+      dotsWrap.innerHTML = '';
+      const total = maxIndex() + 1;
+      for(let i=0;i<total;i++){
+        const d = document.createElement('button');
+        d.className = 'dot' + (i===index ? ' active' : '');
+        d.addEventListener('click', ()=>{ index = i; update(); });
+        dotsWrap.appendChild(d);
+      }
+    }
+
+    function update(){
+      const slideWidth = slides[0].getBoundingClientRect().width + 20;
+      track.style.transform = `translateX(-${index * slideWidth}px)`;
+      [...dotsWrap.children].forEach((d,i)=> d.classList.toggle('active', i===index));
+      prevBtn.style.visibility = index === 0 ? 'hidden' : 'visible';
+      nextBtn.style.visibility = index >= maxIndex() ? 'hidden' : 'visible';
+    }
+
+    prevBtn.addEventListener('click', ()=>{ index = Math.max(0, index-1); update(); });
+    nextBtn.addEventListener('click', ()=>{ index = Math.min(maxIndex(), index+1); update(); });
+
+    window.addEventListener('resize', ()=>{
+      perView = window.innerWidth <= 600 ? 1 : (window.innerWidth <= 860 ? 2 : 3);
+      index = Math.min(index, maxIndex());
+      buildDots();
+      update();
+    });
+
+    buildDots();
+    update();
+  })();
+
+  document.querySelectorAll('.faq-item').forEach(item=>{
+    const question = item.querySelector('.faq-question');
+    question.addEventListener('click', ()=>{
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(other=>{
+        if(other !== item) other.classList.remove('open');
+      });
+      item.classList.toggle('open', !isOpen);
+    });
+  });
+</script>
+</body>
+</html>
